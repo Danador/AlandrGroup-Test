@@ -1,3 +1,106 @@
-{% macro button() %}
-    
+{% macro button(type, click, attr, class, style, size, theme, iconName, iconLeft, link, target, hideText, icons, disabled, fontAwesome, xText) %}
+{% if link %}
+	{% set tag = 'a' %}
+{% else %}
+	{% set tag = 'button' %}
+{% endif %}
+{% if size=='small' %}
+	{% set iconSize = 'h-3 w-3' %}
+{% elif size=='big' %}
+	{% set iconSize = 'h-7 w-7' %}
+{% else %}
+	{% set iconSize = 'h-5 w-5' %}
+{% endif %}
+	<{{ tag }}
+		{% if link %}
+			href="{{ link }}"
+		{% else %}
+			type="{{ type|default('button') }}"
+		{% endif %}
+		{% if click %}
+			@click="{{ click }}"
+		{% endif %}
+		{% if disabled %}
+			:disabled="{{ disabled }}"
+		{% endif %}
+		{% if link and target %}
+			target="{{ target }}"
+		{% endif %}
+		{% if attr %}
+			{{ attr|safe }}
+		{% endif %}
+		class="
+			{{ class }} leading-5 relative z-[2] text-sm font-bold bg-juniper text-white before:bg-gradient-to-r before:from-jet-stream before:to-sandy-beach before:-translate-x-full hover:before:-translate-x-0 ring-1 ring-transparent hover:text-green-pea ring-inset items-center justify-center grid gap-x-2 grid-flow-col focus:outline-none rounded-full outline-none transition-all duration-300 ease-linear py-4 px-7
+		"
+	>
+		{% if iconLeft==true and iconName or iconLeft==true and icons %}
+			{{ icon(
+				name = iconName,
+				size = iconSize,
+				icons = icons,
+				fontAwesome = fontAwesome
+			) }}
+		{% endif %}
+		{% if hideText %}
+			<span class="sr-only" {% if xText %}x-text="{{ xText }}"{% endif %}>
+				{{ hideText }}
+			</span>
+		{% elif caller() %}
+			<span class="empty:hidden" {% if xText %}x-text="{{ xText }}"{% endif %}>
+				{{ caller() }}
+			</span>
+		{% endif %}
+		{% if iconLeft!=true and iconName or iconLeft!=true and icons %}
+			{{ icon(
+				name = iconName,
+				size = iconSize,
+				icons = icons,
+				fontAwesome = fontAwesome
+			) }}
+		{% endif %}
+	</{{ tag }}>
+{% endmacro %}
+
+{% macro buttonBig(type, click, attr, class, style, size, theme, iconName, iconLeft, link, target, hideText, icons, disabled, fontAwesome, xText) %}
+    {% if link %}
+	{% set tag = 'a' %}
+{% else %}
+	{% set tag = 'button' %}
+{% endif %}
+{% if size=='small' %}
+	{% set iconSize = 'h-3 w-3' %}
+{% elif size=='big' %}
+	{% set iconSize = 'h-7 w-7' %}
+{% else %}
+	{% set iconSize = 'h-5 w-5' %}
+{% endif %}
+	<{{ tag }}
+        {% if link %}
+			href="{{ link }}"
+		{% else %}
+			type="{{ type|default('button') }}"
+		{% endif %}
+		{% if click %}
+			@click="{{ click }}"
+		{% endif %}
+		{% if disabled %}
+			:disabled="{{ disabled }}"
+		{% endif %}
+		{% if link and target %}
+			target="{{ target }}"
+		{% endif %}
+		{% if attr %}
+			{{ attr|safe }}
+		{% endif %}
+        class="{{ class }} py-7 px-28 rounded-full group overflow-hidden hover:text-green-pea relative bg-juniper text-white font-bold text-sm transition-all duration-300"
+    >
+        {% if hideText %}
+			<span class="sr-only" {% if xText %}x-text="{{ xText }}"{% endif %}>
+				{{ hideText }}
+			</span>
+		{% elif caller() %}
+            <span class="relative z-[2]">{{ caller() }}</span>
+        {% endif %}
+        <span class="block z-[1] -translate-x-full transition-all duration-300 group-hover:-translate-x-0 bg-gradient-to-r absolute inset-0 from-jet-stream to-sandy-beach"></span>
+    </{{ tag }}>
 {% endmacro %}

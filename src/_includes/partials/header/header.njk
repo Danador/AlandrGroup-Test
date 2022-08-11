@@ -1,3 +1,85 @@
+  {% from "components/icon/icon.njk" import icon %}
+
+{% set navigation=[
+    {
+        title: "Каталог",
+        list: [
+            {
+                title: "Ёжики",
+                url: "#"
+            },
+            {
+                title: "Питание",
+                url: "#"
+            },
+            {
+                title: "Переноски",
+                url: "#"
+            },
+            {
+                title: "Лекарства",
+                url: "#"
+            }
+        ]
+    },
+    {
+        url: "#",
+        title: "о нас"
+    },
+    {
+        url: "#",
+        title: "контакты"
+    },
+    {
+        url: "#",
+        title: "галерея"
+    }
+] %}
+
 <header class="grid-in-header">
-ЖОПА
+    <div class="max-w-[1680px] pt-8 px-5 xl:px-[60px] mx-auto flex justify-between items-center">
+        <a href="/" class="outline-none focus:outline-none text-green-pea hover:text-green-pea/80 transition-colors duration-300">
+            {{ icon(
+                name="logo",
+                size="w-[112px] h-[55px]"
+            ) }}
+        </a>
+        <div class="grid grid-flow-col items-center gap-x-32">
+            <ul class="font-bold grid grid-flow-col gap-x-20 text-green-pea uppercase">
+                {% for item in navigation %}
+                    <li>
+                        {% if list %}
+                            <button class="outline-none focus:outline-none focus-visible:underline hover:underline underline-offset-2 grid grid-flow-col gap-x-2.5">
+                                {{ icon(
+                                    name="arrow-right",
+                                    class="text-green-pea"
+                                ) }}
+                                <span class="uppercase">{{ item.title }}</span>
+                            </button>
+                        {% else %}
+                            <a class="outline-none focus:outline-none focus-visible:underline hover:underline underline-offset-2" href="{{ item.url }}">{{ item.title }}</a>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="grid grid-cols-1a gap-x-20 items-center">
+                <a href="tel:+79655698998" class="hover:underline group underline-offset-4 grid max-w-max grid-flow-col gap-x-5 items-center">
+                    <div class="w-[70px] h-[70px] bg-gradient-to-b rounded-full from-sandy-beach to-jet-stream flex items-center justify-center">
+                        {{ icon(
+                            name="phone",
+                            class="group-hover:animate-pulse",
+                            size="w-8 h-8"
+                        ) }}
+                    </div>
+                    <span class="font-medium text-green-pea">+7 (965) 569-89-98</span>
+                </a>
+                <a href="#">
+                    {{ icon(
+                        name="basket",
+                        size="h-8 w-9"
+                    ) }}
+                </a>
+            </div>
+        </div>
+    </div>
 </header>

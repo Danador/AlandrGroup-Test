@@ -32,6 +32,10 @@
 		@apply !hidden;
 	}
 
+	.body {
+		@apply bg-porcelain;
+	}
+
 	/* * {
 		scrollbar-color: theme(colors.seance) transparent;
 		scrollbar-width: thin;

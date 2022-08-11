@@ -10,8 +10,12 @@ module.exports = {
       xl: '1280px',
     },
     extend: {
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      },
       fontFamily: {
-        body: ['Raleway', ...defaultTheme.fontFamily.sans],
+        first: ['Raleway', ...defaultTheme.fontFamily.sans],
+        second: ['CormorantInfant', ...defaultTheme.fontFamily.sans],
       },
       letterSpacing: {
       },
@@ -27,7 +31,16 @@ module.exports = {
         '1/2': '50%',
       },
       colors: {
-        inherit: 'inherit'
+        inherit: 'inherit',
+        'sandy-beach': '#FFEDCD',
+        'zanah': '#E2F0DF',
+        'juniper': '#70908B',
+        'silver': '#C4C4C4',
+        'jet-stream': '#B0D3CE',
+        'green-pea': '#195557',
+        'porcelain': '#EAEEEF',
+        'submarine': '#B4C5C2',
+        'iron': '#E0E1E1'
       },
     boxShadow: {
       },
