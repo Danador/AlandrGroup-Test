@@ -32,8 +32,8 @@
 		@apply !hidden;
 	}
 
-	* {
+	/* * {
 		scrollbar-color: theme(colors.seance) transparent;
 		scrollbar-width: thin;
-	}
+	} */
 }

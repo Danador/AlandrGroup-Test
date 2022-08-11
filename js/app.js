@@ -1,11 +1,16 @@
 import Alpine from 'alpinejs'
+import mask from '@alpinejs/mask'
+import collapse from '@alpinejs/collapse'
 import lozad from 'lozad'
 
 window.Alpine = Alpine
 
-window.Cookies = Cookies
-
 Alpine.start()
+
+Alpine.plugin(mask)
+Alpine.plugin(collapse)
+
+Alpine.store('bodyLock', false)
 
 const observer = lozad();
 observer.observe();

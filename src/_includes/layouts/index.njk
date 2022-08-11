@@ -9,9 +9,17 @@
 		<meta name="keywords" content="{{ keywords }}">
 		<link rel="stylesheet" href="/@root/css/style.css"> {{ __slinkity.head | safe }}
   </head>
-  <body>
+  <body 
+    x-data="{
+			scrollWidth: window.innerWidth - $refs.body.offsetWidth + 'px'
+		}"
+		:class="$store.bodyLock ? 'overflow-hidden' : ''"
+		:style="$store.bodyLock ? 'padding-right:' + scrollWidth : ''"
+		x-ref="body"
+		class="grid min-h-screen font-body grid-cols-full grid-areas-layout grid-rows-a1a"
+    >
     {% include "partials/header/header.njk" %}
-    <main>
+    <main class="grid-in-main">
       {{ content| safe }}
     </main>
     {% include "partials/footer/footer.njk" %}

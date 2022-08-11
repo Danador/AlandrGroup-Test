@@ -13,6 +13,7 @@
     "alpinejs": "^3.10.3",
     "autoprefixer": "^10.4.8",
     "lozad": "^1.16.0",
+    "postcss-gap": "^1.0.0",
     "swiper": "^8.3.2",
     "vue": "^3.2.28"
   },
