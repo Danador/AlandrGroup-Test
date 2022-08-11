@@ -1,5 +1,6 @@
-{% macro icon(name, size, class) %}
+{% macro icon(name, size, class, attr) %}
 	<svg 
+		{{ attr| safe }}
 		class="{{ size|default('w-6 h-6') }} {{ class }}"
 	>
 		<use xlink:href="/icons/all-icons.svg#{{ name }}"></use>

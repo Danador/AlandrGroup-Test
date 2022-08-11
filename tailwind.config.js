@@ -8,6 +8,7 @@ module.exports = {
       md: '768px',
       lg: '1024px',
       xl: '1280px',
+      '2xl': '1560px',
     },
     extend: {
       backgroundImage: {
@@ -40,9 +41,12 @@ module.exports = {
         'green-pea': '#195557',
         'porcelain': '#EAEEEF',
         'submarine': '#B4C5C2',
-        'iron': '#E0E1E1'
+        'iron': '#E0E1E1',
+        'tiara': "#C2CCCA",
+        'conch': '#CFD7D3'
       },
     boxShadow: {
+      card: "4px 4px 20px 0px ",
       },
       gridTemplateAreas: {
         'layout': [

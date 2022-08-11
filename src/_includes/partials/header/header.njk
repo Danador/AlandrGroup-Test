@@ -3,6 +3,7 @@
 {% set navigation=[
     {
         title: "Каталог",
+        url: "#",
         list: [
             {
                 title: "Ёжики",
@@ -36,42 +37,87 @@
     }
 ] %}
 
-<header class="grid-in-header">
-    <div class="max-w-[1680px] pt-8 px-5 xl:px-[60px] mx-auto flex justify-between items-center">
-        <a href="/" class="outline-none focus:outline-none text-green-pea hover:text-green-pea/80 transition-colors duration-300">
+<header 
+    class="grid-in-header realtive"
+    x-data="{ mobileMenu: false }"
+>
+    <div class="2xl:max-w-[1920px] pt-8 px-5 xl:px-[60px] mx-auto grid grid-cols-a1a lg:flex lg:justify-between items-center">
+        <button
+            @click="mobileMenu = !mobileMenu"  
+            class="w-[25px] lg:hidden grid gap-1"
+        >
+            <span 
+                class="w-full transition-all h-0.5 bg-green-pea block"
+                :class="mobileMenu ? 'rotate-45 translate-y-1.5' : ''"
+                ></span>
+            <span 
+                class="w-full transition-all h-0.5 bg-green-pea block"
+                :class="mobileMenu ? 'rotate-45' : ''"
+            ></span>
+            <span 
+                class="w-full transition-all h-0.5 bg-green-pea block"
+                :class="mobileMenu ? '-rotate-45 -translate-y-1.5' : ''"
+            ></span>
+        </button>
+        <a href="/" class="flex justify-center w-full mx-auto transition-colors duration-300 outline-none lg:block sm:max-w-max lg:mx-0 focus:outline-none text-green-pea hover:text-green-pea/80 focus-visible:text-green-pea/80 hover:animate-pulse focus-visible:animate-pulse">
             {{ icon(
                 name="logo",
-                size="w-[112px] h-[55px]"
+                size="w-[56px] h-[26px] lg:w-[112px] lg:h-[55px]"
             ) }}
         </a>
-        <div class="grid grid-flow-col items-center gap-x-32">
-            <ul class="font-bold grid grid-flow-col gap-x-20 text-green-pea uppercase">
+        <div class="grid items-center grid-flow-col gap-x-16 xl:gap-x-32">
+            <ul class="hidden grid-flow-col font-bold uppercase lg:grid gap-x-10 xl:gap-x-20 text-green-pea">
                 {% for item in navigation %}
-                    <li>
-                        {% if list %}
-                            <button class="outline-none focus:outline-none focus-visible:underline hover:underline underline-offset-2 grid grid-flow-col gap-x-2.5">
+                    <li 
+                        {% if item.list %} 
+                            class="relative"
+                            x-data="{ list: false }"
+                        {% endif %}
+                    >
+                        {% if item.list %}
+                            <button @click="list=true" class="outline-none items-center focus:outline-none focus-visible:underline hover:underline underline-offset-2 grid grid-flow-col gap-x-2.5">
                                 {{ icon(
                                     name="arrow-right",
-                                    class="text-green-pea"
+                                    class="transition-all duration-300 text-green-pea",
+                                    size="w-2.5 h-2.5",
+                                    attr="
+                                        :class=\"list ? 'rotate-90' : ''\"
+                                    "
                                 ) }}
                                 <span class="uppercase">{{ item.title }}</span>
                             </button>
+                            <div 
+                                x-cloak 
+                                x-show="list"
+                                x-transition:enter="opacity-0 invisible max-h-0"
+						        x-transition:leave="opacity-0 invisible"
+                                @click.outside="list=false"
+                                class="absolute py-5 pl-6 pr-12 transition-all rounded-lg shadow-card top-7 shadow-tiara"
+                            >
+                                <ul class="grid gap-y-5">
+                                    {% for subitem in item.list %}
+                                        <li>
+                                            <a href="{{ subitem.url }}" class="font-bold transition-all duration-300 outline-none focus:outline-none focus-visible:underline hover:underline text-green-pea">{{ subitem.title }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
                         {% else %}
                             <a class="outline-none focus:outline-none focus-visible:underline hover:underline underline-offset-2" href="{{ item.url }}">{{ item.title }}</a>
                         {% endif %}
                     </li>
                 {% endfor %}
             </ul>
-            <div class="grid grid-cols-1a gap-x-20 items-center">
-                <a href="tel:+79655698998" class="hover:underline group underline-offset-4 grid max-w-max grid-flow-col gap-x-5 items-center">
-                    <div class="w-[70px] h-[70px] bg-gradient-to-b rounded-full from-sandy-beach to-jet-stream flex items-center justify-center">
+            <div class="grid items-center grid-cols-1a gap-x-3 sm:gap-x-10 xl:gap-x-20">
+                <a href="{{ site.phone| toPhoneLink }}" class="grid items-center grid-flow-col hover:underline group underline-offset-4 max-w-max gap-x-5">
+                    <div class="w-[35px] h-[35px] lg:w-[70px] lg:h-[70px] shadow-md lg:shadow-none shadow-green-pie bg-gradient-to-b rounded-full from-sandy-beach to-jet-stream flex items-center justify-center">
                         {{ icon(
                             name="phone",
-                            class="group-hover:animate-pulse",
-                            size="w-8 h-8"
+                            class="-rotate-12 lg:group-hover:animate-pulse",
+                            size="w-3 h-3 lg:w-8 lg:h-8"
                         ) }}
                     </div>
-                    <span class="font-medium text-green-pea">+7 (965) 569-89-98</span>
+                    <span class="hidden font-medium lg:block text-green-pea">{{ site.phone| toPhone }}</span>
                 </a>
                 <a href="#">
                     {{ icon(
@@ -82,4 +128,38 @@
             </div>
         </div>
     </div>
+    <nav 
+        x-cloak
+        x-show="mobileMenu"
+        x-transition:enter="-translate-x-full"
+		x-transition:leave="-translate-x-full"
+        class="bg-white transition-all duration-300 left-0 rounded-r-lg lg:hidden px-6 py-5 absolute top-2 w-[93%] max-w-[350px]"
+    >
+        <div class="grid items-center gap-5 grid-cols-a1">
+            <button 
+                @click="mobileMenu=false"
+                @click.outside="mobileMenu=false"
+                class="grid w-5 gap-1"
+            >
+                <span class="w-full block h-0.5 rotate-45 bg-green-pea"></span>
+                <span class="w-full block h-0.5 -rotate-45 -translate-y-1.5 bg-green-pea"></span>
+            </button>
+            <a href="/" class="flex justify-center w-full">
+                {{ icon(
+                    name="logo",
+                    size="w-[56px] h-[26px]"
+                ) }}
+            </a>
+        </div>
+        <ul class="grid px-5 gap-y-5 my-14">
+            {% for item in navigation %}
+                <li>
+                    <a href="{{ item.url }}" class="text-lg font-bold uppercase outline-none active:underline underline-offset-2 focus-visible:underline focus:outline-none text-green-pea">{{ item.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{{ site.phone| toPhoneLink }}" class="block px-5 pb-5 mt-24">
+            <span class="text-xl font-medium text-green-pea font-first">{{ site.phone|toPhone }}</span>
+        </a>
+    </nav>
 </header>

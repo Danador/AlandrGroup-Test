@@ -1,5 +1,6 @@
 const { DateTime } = require("luxon");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
+const filters = require('./utils/filters.js');
 const site = require('./src/_data/site.json');
 const localizedCollections = ['post'];
 const slinkity = require('slinkity')
@@ -64,6 +65,11 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("cssmin", function(code) {
     return new CleanCSS({}).minify(code).styles;
   });
+
+  // Filters
+  Object.keys(filters).forEach((filterName) => {
+    eleventyConfig.addFilter(filterName, filters[filterName]);
+  })
 
   // Minify JS
   eleventyConfig.addFilter("jsmin", function(code) {
