@@ -1,0 +1,24 @@
+{
+  "name": "alandr",
+  "scripts": {
+    "dev": "eleventy --serve --incremental",
+    "build": "eleventy"
+  },
+  "dependencies": {
+    "@alpinejs/collapse": "^3.10.3",
+    "@alpinejs/mask": "^3.10.3",
+    "@savvywombat/tailwindcss-grid-areas": "^2.1.0",
+    "@tailwindcss/typography": "^0.5.4",
+    "alpinejs": "^3.10.3",
+    "autoprefixer": "^10.4.8",
+    "lozad": "^1.16.0",
+    "swiper": "^8.3.2",
+    "vue": "^3.2.28"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^1.0.0",
+    "@slinkity/renderer-vue": "^1.0.0",
+    "slinkity": "^0.8.0",
+    "tailwindcss": "^3.1.8"
+  }
+}

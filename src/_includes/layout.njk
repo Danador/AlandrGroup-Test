@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+		<link rel="canonical" href="{{ site.rootUrl|default('https://alandGroup.ru') }}{{ page.url }}">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>{{ envs.site.name }}</title>
+		<meta name="description" content="{{ description }}">
+		<meta name="keywords" content="{{ keywords }}">
+		<link rel="stylesheet" href="/@root/css/style.css"> {{ __slinkity.head | safe }}
+  </head>
+  <body>
+    {% include "partials/header/header.njk" %}
+    <main>
+      {{ content| safe }}
+    </main>
+    {% include "partials/footer/footer.njk" %}
+    <script type="module" src="/@root/js/app.js"></script>
+  </body>
+</html>
