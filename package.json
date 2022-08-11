@@ -5,6 +5,7 @@
     "build": "eleventy"
   },
   "dependencies": {
+    "@11ty/eleventy-navigation": "^0.3.4",
     "@alpinejs/collapse": "^3.10.3",
     "@alpinejs/mask": "^3.10.3",
     "@savvywombat/tailwindcss-grid-areas": "^2.1.0",

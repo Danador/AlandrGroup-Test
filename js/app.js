@@ -1,6 +1,5 @@
 import Alpine from 'alpinejs'
 import lozad from 'lozad'
-import './metriks'
 
 window.Alpine = Alpine
 

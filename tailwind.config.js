@@ -11,6 +11,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
+        body: ['Raleway', ...defaultTheme.fontFamily.sans],
       },
       letterSpacing: {
       },
