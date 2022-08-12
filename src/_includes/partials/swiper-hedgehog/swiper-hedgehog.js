@@ -14,16 +14,16 @@ export default new class HedgehogSwiper {
 		if (!document.querySelector(`.${this.swiperClass}`)) return
 		const config = {
 			modules: [Navigation, Autoplay, Parallax],
-			spaceBetween: 10,
+			spaceBetween: 30,
             breakpoints:{
-                '1024':{
+                '1280':{
 					slidesPerView: 2,
                     spaceBetween: 40,
                 }
             },
+			slidesPerView: 'auto',
 			loop: true,
 			observer: true,
-            slidesPerView: 'auto',
 			// autoplay: {
 			// 	delay: 3000,
 			// 	disableOnInteraction: false
