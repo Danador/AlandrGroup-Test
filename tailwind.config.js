@@ -46,7 +46,8 @@ module.exports = {
         'iron': '#E0E1E1',
         'tiara': "#C2CCCA",
         'conch': '#CFD7D3',
-        'rose-white': '#FFFEFE'
+        'rose-white': '#FFFEFE',
+        'alabaster': '#F8F8F8'
       },
     boxShadow: {
       card: "4px 4px 20px 0px ",

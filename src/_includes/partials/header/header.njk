@@ -42,7 +42,7 @@
         mobileMenu: false, 
         noTop: false 
     }"
-    x-init="$watch('noTop', value => openMenuNoTop ? openMenuNoTop = !value : '')"
+    x-init="$watch('noTop')"
 	@scroll.window="noTop = (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100)"
     class="fixed left-0 w-full transition-all duration-300  top-0 z-[100] grid-in-header"
     :class="noTop ? 'shadow-lg bg-porcelain shadow-black/[0.10]' : ''"
@@ -115,7 +115,7 @@
                 {% endfor %}
             </ul>
             <div class="grid items-center grid-cols-1a gap-x-3 sm:gap-x-10 xl:gap-x-20">
-                <a href="{{ site.phone| toPhoneLink }}" class="grid items-center grid-flow-col hover:underline group underline-offset-4 max-w-max gap-x-5">
+                <a href="{{ site.phone| toPhoneLink }}" class="grid items-center grid-flow-col outline-none focus:outline-none hover:underline group underline-offset-4 max-w-max gap-x-5">
                     <div class="w-[35px] h-[35px] lg:w-[70px] lg:h-[70px] shadow-md lg:shadow-none shadow-green-pie bg-gradient-to-b rounded-full from-sandy-beach to-jet-stream flex items-center justify-center">
                         {{ icon(
                             name="phone",
@@ -123,9 +123,9 @@
                             size="w-3 h-3 lg:w-8 lg:h-8"
                         ) }}
                     </div>
-                    <span class="hidden font-medium lg:block text-green-pea">{{ site.phone| toPhone }}</span>
+                    <span class="hidden font-medium group-focus-visible:underline lg:block text-green-pea">{{ site.phone| toPhone }}</span>
                 </a>
-                <a href="#">
+                <a href="#" class="transition-all duration-300 outline-none focus:outline-none focus-visible:opacity-80">
                     {{ icon(
                         name="basket",
                         size="h-8 w-9"

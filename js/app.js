@@ -1,3 +1,5 @@
+import HedgehogSwiper from '/@root/src/_includes/partials/swiper-hedgehog/swiper-hedgehog';
+
 import Alpine from 'alpinejs'
 import mask from '@alpinejs/mask'
 import collapse from '@alpinejs/collapse'

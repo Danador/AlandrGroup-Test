@@ -1,0 +1,79 @@
+{% from "components/buttons/buttons.njk" import buttonBig %}
+{% from "components/icon/icon.njk" import icon %}
+
+{% set hedgehog = [
+    {
+        title: "хочу ёжика для себя"
+    },
+    {
+        title: "хочу ёжика для детей"
+    },
+    {
+        title: "хочу ёжика для разведения"
+    }
+] %}
+
+{% set hedgehogValue = [
+    {
+        title: "Мне нужен 1-2 ёжика"
+    },
+    {
+        title: "Мне нужны 3 и более ёжиков"
+    },
+    {
+        title: "Мне нужны 3-4 ёжика"
+    },
+    {
+        title: "Пока присматриваюсь"
+    }
+] %}
+
+<section>
+    <div class="2xl:max-w-[1920px] overflow-hidden px-5 pt-24 mx-auto w-full">
+        <form action="" class="py-5 lg:pt-10 relative lg:pb-16 rounded-[30px] bg-porcelain px-5 lg:px-14">
+            <h2 class="font-second text-center font-bold text-green-pea lg:text-[45px] text-2xl lg:leading-[54px]">Заполните заявку и мы забронируем для Вас нового друга</h2>
+            <fieldset class="grid items-center justify-center gap-8 mt-8 justify-items-center xl:grid-cols-1a">
+                <fieldset class="grid lg:grid-flow-col justify-items-center gap-3.5 max-w-max    ">
+                    {% for item in hedgehog %}
+                        <label>
+                            <input type="radio" class="sr-only peer" name="hedgehog" value="{{ loop.index }}">
+                            <span class="block py-4 transition-all duration-300 bg-white rounded-full cursor-pointer peer-checked:bg-juniper ring-transparent ring-2 ring-juniper peer-checked:text-white text-juniper max-w-max px-7 font-second" x-text="'{{ item.title }}'">
+                            </span>
+                        </label>
+                    {% endfor %}
+                </fieldset>
+                <fieldset class="grid lg:grid-cols-2 gap-x-12 gap-y-3.5 max-w-max">
+                    {% for item in hedgehogValue %}
+                        <label class="grid grid-flow-col items-center gap-x-2.5 max-w-max">
+                            <input type="radio" class="sr-only peer" name="hedgehogValue" value="{{ loop.index }}" checked>
+                            <span class="block w-3.5 h-3.5 transition-all duration-300 before:transition-all before:duration-300 outline-none peer-focus:outline-none peer-focus-visible:ring-juniper/50 bg-white ring-1 rounded-full ring-juniper relative peer-checked:before:opacity-100 before:w-2 before:h-2 before:rounded-full before:top-1/2 before:left-1/2 before:bg-juniper before:-translate-x-1/2 before:-translate-y-1/2 before:opacity-0 before:absolute font-second"></span>
+                            <span class="text-sm font-bold text-juniper font-second">{{ item.title }}</span>
+                        </label>
+                    {% endfor %}
+                </fieldset>
+            </fieldset>
+            <fieldset class="grid gap-5 mt-10 md:grid-cols-3">
+                <input type="text" placeholder="Ваше имя" class="py-6 text-sm transition-all duration-300 rounded-lg outline-none focus:placeholder:opacity-0 focus-visible:outline-none bg-alabaster px-7 placeholder:text-green-pea placeholder:text-sm text-green-pea">
+                <input type="text" placeholder="Ваш телефон" class="py-6 text-sm transition-all duration-300 rounded-lg outline-none focus:placeholder:opacity-0 focus-visible:outline-none bg-alabaster px-7 placeholder:text-green-pea placeholder:text-sm text-green-pea">
+                <input type="text" placeholder="Ваш e-mail" class="py-6 text-sm transition-all duration-300 rounded-lg outline-none focus:placeholder:opacity-0 focus-visible:outline-none bg-alabaster px-7 placeholder:text-green-pea placeholder:text-sm text-green-pea">
+                <textarea class="md:col-span-3 py-6 text-sm min-h-[108px] transition-all duration-300 focus:placeholder:opacity-0 rounded-lg outline-none resize-none focus-visible:outline-none bg-alabaster px-7 placeholder:text-green-pea placeholder:text-sm text-green-pea" placeholder="Комментарий к заявке"></textarea>
+            </fieldset>
+            {% call buttonBig(
+                class="py-3 px-5 lg:py-7 lg:px-[118px] absolute bottom-0 -translate-x-1/2 translate-y-full lg:translate-y-[calc(100%+20px)] left-1/2",
+                type="submit"
+            ) %}
+                Купить ёжика
+            {% endcall %}
+        </form>
+        <div class="mt-14">
+            <div class="grid grid-flow-col max-w-max mx-auto items-center gap-x-2.5">
+                {{ icon(
+                    name="ej",
+                    size="w-10 h-10"
+                ) }}
+                <span class="text-green-pea font-second">У на осталось еще: <span class="underline">25 ёжиков</span></span>
+            </div>
+            <span class="mt-10 max-w-[190px] mx-auto block text-center text-green-pea">Торопитесь! Акция действует до 26. 02. 2023</span>
+        </div>
+    </div>
+</section>

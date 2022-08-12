@@ -1,4 +1,68 @@
+{% from "components/icon/icon.njk" import icon %}
 
-<footer class="grid-in-footer">
-    {# <div class="rounded-full h-48 w-48 bg-gradient-radial from-purple-500 via-pink-500 to-red-500"></div> #}
+{% set navigation=[
+    {
+        title: "Каталог",
+        url: "#"
+    },
+    {
+        title: "о нас",
+        url: "#"
+    },
+    {
+        title: "контакты",
+        url: "#"
+    },
+    {
+        title: "галерея",
+        url: "#"
+    }
+] %}
+
+{% set socials=[
+    {
+        icon: "instagram",
+        url: "#"
+    },
+    {
+        icon: "facebook",
+        url: "#"
+    },
+    {
+        icon: "twitter",
+        url: "#"
+    }
+] %}
+
+<footer class="grid-in-footer bg-juniper">
+    <div class="2xl:max-w-[1920px] mx-auto grid md:grid-cols-1a gap-x-20 gap-y-5 items-center px-14 py-12 w-full">
+        {{ icon(
+            name="logo-white",
+            size="w-[132px] h-[57px]",
+            class="col-span-4 row-start-1 mx-auto md:col-start-1 md:col-auto md:mx-0"
+        ) }}
+        <ul class="grid col-span-4 row-start-2 mx-auto md:col-span-3 md:row-start-1 md:col-start-2 md:grid-cols-4 gap-x-20 max-w-max xl:col-auto">
+            {% for item in navigation %}
+                <li>
+                    <a class="font-bold text-white uppercase transition-all duration-300 outline-none hover:underline focus:outline-none focus-visible:underline font-second" href="{{ item.url }}">{{ item.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <ul class="grid items-center grid-flow-col col-span-4 row-start-3 mx-auto md:mx-0 md:col-auto md:col-start-4 md:row-start-2 xl:col-start-3 xl:row-start-1 gap-x-6 max-w-max">
+            {% for item in socials %}
+                <li>
+                    <a class="text-white transition-all duration-300 outline-none focus:outline-none focus-visible:text-white/70" href="{{ item.url }}">
+                        {{ icon(
+                            name = item.icon,
+                            size = "w-8 h-8"
+                        ) }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{{ site.phone| toPhoneLink }}" class="col-span-4 row-start-4 mx-auto text-xl font-medium text-white transition-all duration-300 outline-none md:mx-0 md:col-span-2 md:col-start-1 md:row-start-2 xl:row-start-1 xl:col-auto xl:col-start-4 focus:outline-none focus-visible:underline active:underline">
+            {{ site.phone|toPhone }}
+        </a>
+        <span class="col-span-4 row-start-5 mt-6 text-white">Все права защищены. <br> Указанная стоимость товаров и условия их приобретения действительны на текущую дату.</span>
+    </div>
 </footer>   
