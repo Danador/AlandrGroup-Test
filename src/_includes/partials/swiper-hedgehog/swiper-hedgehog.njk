@@ -4,7 +4,7 @@
     {
         title: "Ежик “Евгений”",
         description: "Очень любит сладости. Маленький сладкоежка=) Мы называем его так между собой. Ручной, любит внимаение ",
-        class: "bg-[bottom_right_-6px] top-10 w-[520px] ponter-events-none h-[260px]",
+        class: "bg-[bottom_right_-6px] translate-y-full top-10 w-[180px] h-[130px] lg:w-[520px] ponter-events-none lg:h-[260px]",
         img: "/images/3.png",
         price: "1 500 ₽",
         oldPrice: "3 000 ₽"
@@ -13,7 +13,7 @@
         title: "Ежик “Максим”",
         description: "Немного игривый и задорный характер этого друга никого не оставит равнодушным!",
         img: "/images/4.png",
-        class: "bg-[bottom_right_-20px] top-0 w-[380px] ponter-events-none h-[280px] [background-position-y:22px]",
+        class: "bg-[bottom_right_-20px] translate-y-[115%] top-0 w-[180px] h-[130px] lg:w-[380px] ponter-events-none lg:h-[280px] [background-position-y:22px]",
         price: "2 500 ₽",
         oldPrice: "5 000 ₽"
     }
@@ -69,7 +69,7 @@
                             </div>
                         </div>
                         <div class="relative grid py-5 overflow-hidde px-7">
-                            <div class="grid gap-y-4 mt-10 max-w-[205px]">
+                            <div class="grid gap-y-4 lg:mt-10 max-w-[205px]">
                                 <p class="font-second text-green-pea font-bold text-[40px] leading-[48px]">{{ item.title }}</p>
                                 <p class="text-sm">{{ item.description }}</p>
                                 <div class="grid gap-y-2">
@@ -77,7 +77,7 @@
                                     <span class="font-second font-bold text-green-pea text-[40px] leading-[48px]">{{ item.price }}</span>
                                 </div>
                             </div>
-                            <div class="absolute translate-y-1/4 right-0 {{ item.class }} bg-no-repeat bg-cover" style="background-image: url('{{ item.img }}')">
+                            <div class="absolute translate-x-10 lg:translate-x-0 lg:translate-y-1/4 right-0 {{ item.class }} bg-no-repeat bg-cover" style="background-image: url('{{ item.img }}')">
                             </div>
                             <div class="bg-white h-28 w-[200px] -rotate-45 translate-x-1/2 translate-y-1/2 absolute bottom-0 right-0">
                                 {{ icon(
@@ -90,7 +90,7 @@
                     </div>
                 {% endfor %}
             </div>
-            <div class="-translate-y-1 h-[420px] top-0 w-[120px] bg-white absolute -left-1 rounded-l-lg z-[1] ">
+            <div class="hidden lg:block -translate-y-1 h-[420px] top-0 w-[120px] bg-white absolute -left-1 rounded-l-lg z-[1] ">
                 <button class="absolute rotate-180 left-1/2 top-1/2 hedgehogs-button-prev">
                     {{ icon(
                         name="arrow-right-stroke",
@@ -98,7 +98,7 @@
                     ) }}
             </button>
             </div>
-            <div class="-translate-y-1 h-[420px] top-0 w-[120px] bg-white absolute rounded-r-lg -right-1 z-[1] ">
+            <div class="hidden lg:block -translate-y-1 h-[420px] top-0 w-[120px] bg-white absolute rounded-r-lg -right-1 z-[1] ">
                 <button class="absolute right-1/2 hedgehogs-button-next top-1/2">
                     {{ icon(
                         name="arrow-right-stroke",
