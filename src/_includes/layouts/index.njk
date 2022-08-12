@@ -16,11 +16,12 @@
 		:class="$store.bodyLock ? 'overflow-hidden' : ''"
 		:style="$store.bodyLock ? 'padding-right:' + scrollWidth : ''"
 		x-ref="body"
-		class="body overflow-hidden grid min-h-screen font-second grid-cols-full grid-areas-layout grid-rows-a1a"
+		class="relative grid min-h-screen body font-first grid-cols-full grid-areas-layout grid-rows-a1a"
     >
     {% include "partials/header/header.njk" %}
-    <main class="grid-in-main">
+    <main class="overflow-x-hidden grid-in-main">
       {{ content| safe }}
+      <div class="h-screen"></div>
     </main>
     {% include "partials/footer/footer.njk" %}
     <script type="module" src="/@root/js/app.js"></script>

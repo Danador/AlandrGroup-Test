@@ -13,10 +13,12 @@ module.exports = {
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'radial-1': 'radial-gradient(50% 50% at 50% 50%, rgba(180, 197, 194, 0.83) 0%, rgba(224, 225, 225, 0) 100%);',
+        'radial-2': 'radial-gradient(50% 50% at 50% 50%, rgba(255, 238, 206, 0.49) 0%, rgba(196, 196, 196, 0) 100%);'
       },
       fontFamily: {
         first: ['Raleway', ...defaultTheme.fontFamily.sans],
-        second: ['CormorantInfant', ...defaultTheme.fontFamily.sans],
+        second: ['CormorantInfant'],
       },
       letterSpacing: {
       },
@@ -43,7 +45,8 @@ module.exports = {
         'submarine': '#B4C5C2',
         'iron': '#E0E1E1',
         'tiara': "#C2CCCA",
-        'conch': '#CFD7D3'
+        'conch': '#CFD7D3',
+        'rose-white': '#FFFEFE'
       },
     boxShadow: {
       card: "4px 4px 20px 0px ",

@@ -38,10 +38,16 @@
 ] %}
 
 <header 
-    class="grid-in-header realtive"
-    x-data="{ mobileMenu: false }"
+    x-data="{ 
+        mobileMenu: false, 
+        noTop: false 
+    }"
+    x-init="$watch('noTop', value => openMenuNoTop ? openMenuNoTop = !value : '')"
+	@scroll.window="noTop = (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100)"
+    class="fixed left-0 w-full transition-all duration-300  top-0 z-[100] grid-in-header"
+    :class="noTop ? 'shadow-lg bg-porcelain shadow-black/[0.10]' : ''"
 >
-    <div class="2xl:max-w-[1920px] pt-8 px-5 xl:px-[60px] mx-auto grid grid-cols-a1a lg:flex lg:justify-between items-center">
+    <div :class="noTop ? 'py-5' : 'py-8'" class="transition-all duration-300 2xl:max-w-[1920px] px-5 xl:px-[60px] mx-auto grid grid-cols-a1a lg:flex lg:justify-between items-center">
         <button
             @click="mobileMenu = !mobileMenu"  
             class="w-[25px] lg:hidden grid gap-1"
@@ -92,7 +98,7 @@
                                 x-transition:enter="opacity-0 invisible max-h-0"
 						        x-transition:leave="opacity-0 invisible"
                                 @click.outside="list=false"
-                                class="absolute py-5 pl-6 pr-12 transition-all rounded-lg shadow-card top-7 shadow-tiara"
+                                class="absolute py-5 pl-6 pr-12 transition-all rounded-lg bg-rose-white shadow-card top-7 shadow-tiara"
                             >
                                 <ul class="grid gap-y-5">
                                     {% for subitem in item.list %}
@@ -159,7 +165,7 @@
             {% endfor %}
         </ul>
         <a href="{{ site.phone| toPhoneLink }}" class="block px-5 pb-5 mt-24">
-            <span class="text-xl font-medium text-green-pea font-first">{{ site.phone|toPhone }}</span>
+            <span class="text-xl font-medium text-green-pea">{{ site.phone|toPhone }}</span>
         </a>
     </nav>
 </header>

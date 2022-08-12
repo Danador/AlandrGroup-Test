@@ -92,7 +92,7 @@
 		{% if attr %}
 			{{ attr|safe }}
 		{% endif %}
-        class="{{ class }} py-7 px-28 rounded-full group overflow-hidden hover:text-green-pea relative bg-juniper text-white font-bold text-sm transition-all duration-300"
+        class="{{ class }} py-7 max-w-max px-[118px] rounded-full group overflow-hidden hover:text-green-pea relative bg-juniper text-white font-bold text-sm transition-all duration-300"
     >
         {% if hideText %}
 			<span class="sr-only" {% if xText %}x-text="{{ xText }}"{% endif %}>
@@ -101,6 +101,6 @@
 		{% elif caller() %}
             <span class="relative z-[2]">{{ caller() }}</span>
         {% endif %}
-        <span class="block z-[1] -translate-x-full transition-all duration-300 group-hover:-translate-x-0 bg-gradient-to-r absolute inset-0 from-jet-stream to-sandy-beach"></span>
+        <span class="block z-[1] transition-all duration-300 opacity-0 group-hover:opacity-100 bg-gradient-to-r absolute inset-0 from-jet-stream to-sandy-beach"></span>
     </{{ tag }}>
 {% endmacro %}
